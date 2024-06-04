@@ -1,7 +1,51 @@
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+
 function Product() {
+  let { id } = useParams();
+  const [data, loading, error] = useFetch(
+    `https://v2.api.noroff.dev/online-shop/${id}`
+  );
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error</p>;
+  if (!loading && !error && data) {
+    console.log(data);
+  }
   return (
-    <div>
-      <h1>Product</h1>
+    <div className="min-h-screen">
+      <div className="h-screen w-2/3 m-auto flex">
+        <div className="flex-1 mr-4">
+          <img src={data.image?.url} alt={data.image?.alt} className="w-full" />
+        </div>
+        <div className="flex-1 ml-4">
+          <h1 className="text-4xl font-bold mb-3">{data.title}</h1>
+          <p>{data.rating}</p>
+          {data.price === data.discountedPrice ? (
+            <p className="mb-5 font-bold text-neutral-600 text-lg">
+              kr {data.price}
+            </p>
+          ) : (
+            <p className="text-red-500 font-bold text-lg mb-5">
+              {data.discountedPrice}kr{" "}
+              <span className="bg-red-50 border border-red-500 rounded-md px-2">
+                -
+                {Math.round(
+                  ((data.price - data.discountedPrice) / data.price) * 100
+                ).toFixed(0)}
+                %
+              </span>{" "}
+              <span className="line-through text-neutral-600">
+                {data.price}kr
+              </span>
+            </p>
+          )}
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5">
+            Add to cart
+          </button>
+          <h2 className="text-3xl mb-1">Item Description</h2>
+          <p className="mb-3">{data.description}</p>
+        </div>
+      </div>
     </div>
   );
 }
