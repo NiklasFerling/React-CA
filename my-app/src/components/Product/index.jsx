@@ -2,16 +2,21 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { CartContent } from "../../context/CartContext";
 
 function Product() {
   let { id } = useParams();
   const [data, loading, error] = useFetch(
     `https://v2.api.noroff.dev/online-shop/${id}`
   );
+  const { cart, addToCart } = useContext(CartContent);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
   if (!loading && !error && data) {
     console.log(data);
+    console.log(cart);
   }
   return (
     <div className="min-h-screen">
@@ -44,7 +49,10 @@ function Product() {
             {data.rating} {""}
             <FontAwesomeIcon icon={faStar} />
           </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5">
+          <button
+            onClick={() => addToCart(data)}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5"
+          >
             Add to cart
           </button>
           <h2 className="text-3xl mb-1">Item Description</h2>
