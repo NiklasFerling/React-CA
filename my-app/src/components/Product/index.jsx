@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function Product() {
   let { id } = useParams();
@@ -18,8 +20,7 @@ function Product() {
           <img src={data.image?.url} alt={data.image?.alt} className="w-full" />
         </div>
         <div className="flex-1 ml-4">
-          <h1 className="text-4xl font-bold mb-3">{data.title}</h1>
-          <p>{data.rating}</p>
+          <h1 className="text-4xl font-bold mb-2">{data.title}</h1>
           {data.price === data.discountedPrice ? (
             <p className="mb-5 font-bold text-neutral-600 text-lg">
               kr {data.price}
@@ -39,6 +40,10 @@ function Product() {
               </span>
             </p>
           )}
+          <p className="text-amber-500 mb-5">
+            {data.rating} {""}
+            <FontAwesomeIcon icon={faStar} />
+          </p>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-5">
             Add to cart
           </button>
