@@ -8,7 +8,7 @@ function Home() {
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error</h1>;
-
+  console.log(data);
   return (
     <div className="min-h-screen px-20">
       <div className="flex flex-wrap justify-center">

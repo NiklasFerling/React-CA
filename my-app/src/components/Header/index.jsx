@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CartCountIcon from "../CartCountIcon";
+import SearchBar from "../SearchBar";
 
 function Nav() {
   return (
@@ -9,9 +10,7 @@ function Nav() {
           <Link to="/">e.Com</Link>
         </li>
         <li>
-          <form action="">
-            <input className="text-black px-2 py-1" name="text" />
-          </form>
+          <SearchBar />
         </li>
         <li className="text-2xl">
           <Link to="/cart">
