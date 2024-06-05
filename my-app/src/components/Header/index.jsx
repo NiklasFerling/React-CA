@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import CartCountIcon from "../CartCountIcon";
 
 function Nav() {
   return (
@@ -16,7 +15,7 @@ function Nav() {
         </li>
         <li className="text-2xl">
           <Link to="/cart">
-            <FontAwesomeIcon icon={faCartShopping} />
+            <CartCountIcon />
           </Link>
         </li>
       </ul>
