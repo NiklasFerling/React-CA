@@ -15,7 +15,7 @@ function Product() {
   }
   return (
     <div className="min-h-screen">
-      <div className="h-screen w-2/3 m-auto flex">
+      <div className="h-screen md:w-2/3 lg:w-1/2 m-auto flex flex-col sm:flex-row">
         <div className="flex-1 mr-4">
           <img src={data.image?.url} alt={data.image?.alt} className="w-full" />
         </div>
