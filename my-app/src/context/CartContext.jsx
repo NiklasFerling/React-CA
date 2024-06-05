@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
     setCart(newCart);
   }
   return (
-    <CartContent.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContent.Provider value={{ cart, setCart, addToCart, removeFromCart }}>
       {children}
     </CartContent.Provider>
   );
