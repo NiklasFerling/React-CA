@@ -5,7 +5,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 function ProductCard({ product }) {
   return (
     <Link to={`/product/${product.id}`}>
-      <div className="product-card w-80 mx-2 mb-8">
+      <div className="w-80 mx-2 mb-8">
         <img
           src={product.image.url}
           alt={product.image.alt}

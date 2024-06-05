@@ -11,7 +11,7 @@ function Home() {
 
   return (
     <div className="min-h-screen px-20">
-      <div className="flex flex-wrap text-cemter">
+      <div className="flex flex-wrap justify-center">
         {data.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
