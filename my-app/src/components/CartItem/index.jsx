@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CartContent } from "../../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 function CartItem({ product }) {
   const { removeFromCart } = useContext(CartContent);
@@ -9,12 +10,15 @@ function CartItem({ product }) {
   return (
     <>
       <li key={product.id} className="flex mb-8">
-        <img
-          src={product.image.url}
-          alt={product.image.alt}
-          className="w-40 h-40 object-cover mr-3"
-        />
-        <div className="flex justify-between flex-1">
+        <Link
+          to={`/product/${product.id}`}
+          className="flex justify-left flex-1"
+        >
+          <img
+            src={product.image.url}
+            alt={product.image.alt}
+            className="w-40 h-40 object-cover mr-3"
+          />
           <div>
             <h2 className="text-lg font-bold">{product.title}</h2>
             {product.price === product.discountedPrice ? (
@@ -39,13 +43,13 @@ function CartItem({ product }) {
               </p>
             )}
           </div>
-          <button
-            onClick={() => removeFromCart(product)}
-            className="bg-red-500 text-white px-4 py-2 h-10 w-10 rounded-full hover:bg-red-700 justify-center flex items-center"
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </div>
+        </Link>
+        <button
+          onClick={() => removeFromCart(product)}
+          className="bg-red-500 text-white px-4 py-2 h-10 w-10 rounded-full hover:bg-red-700 justify-center flex items-center"
+        >
+          <FontAwesomeIcon icon={faTrash} />
+        </button>
       </li>
       <hr className="mb-8" />
     </>
