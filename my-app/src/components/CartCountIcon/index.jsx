@@ -5,7 +5,6 @@ import { CartContent } from "../../context/CartContext";
 
 function CartCountIcon({ count }) {
   const { cart } = useContext(CartContent);
-  console.log(cart.length);
   return (
     <div className="relative">
       <span>

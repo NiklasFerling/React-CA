@@ -15,8 +15,6 @@ function Product() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
   if (!loading && !error && data) {
-    console.log(data);
-    console.log(cart);
   }
   return (
     <div className="min-h-screen">
