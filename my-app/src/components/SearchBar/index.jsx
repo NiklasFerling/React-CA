@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function SearchBar(props) {
+function SearchBar({ setResults }) {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
@@ -15,13 +15,13 @@ function SearchBar(props) {
             product.title.toLowerCase().includes(value)
           );
         });
-        console.log(results);
+        setResults(results);
       });
   };
-  const handleSearch = (value) => {
+  function handleSearch(value) {
     setInput(value);
     fetchData(value);
-  };
+  }
 
   return (
     <div>
@@ -29,9 +29,8 @@ function SearchBar(props) {
         type="text"
         value={input}
         onChange={(e) => handleSearch(e.target.value)}
-        className="text-black  rounded-lg p-2"
+        className="text-black  rounded-lg p-2 w-full"
       />
-      <div>Search results</div>
     </div>
   );
 }
