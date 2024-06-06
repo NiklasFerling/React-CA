@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 function Contact() {
   const schema = yup.object().shape({
@@ -19,8 +20,11 @@ function Contact() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const onSubmit = (body) => {
     console.log(body);
+    setShowSuccess(true);
   };
 
   return (
@@ -69,6 +73,11 @@ function Contact() {
         >
           Submit
         </button>
+        {showSuccess && (
+          <p className="text-green-700 text-center mt-4">
+            Your message has been sent!
+          </p>
+        )}
       </form>
     </div>
   );
