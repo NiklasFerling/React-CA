@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SearchBar({ setResults }) {
   const [input, setInput] = useState("");

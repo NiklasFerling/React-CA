@@ -10,7 +10,7 @@ function Product() {
   const [data, loading, error] = useFetch(
     `https://v2.api.noroff.dev/online-shop/${id}`
   );
-  const { cart, addToCart } = useContext(CartContent);
+  const { addToCart } = useContext(CartContent);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
