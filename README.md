@@ -31,7 +31,7 @@ git clone git@github.com:NiklasFerling/React-CA.git
 ```
 
 2. Install the dependencies:
-   You should right click the "my-app" folder and select "open integrated terminal"
+(You should right click the "my-app" folder and select "open integrated terminal")
 
 ```
 npm install
